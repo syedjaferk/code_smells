@@ -21,6 +21,9 @@ class Address:
     
     def set_country(self, country):
         self._country = country
+    
+    def get_address_summary(self):
+        return self.get_post_code() + " " + self.get_country()
 
 
 class Customer:
@@ -46,6 +49,9 @@ class Customer:
     
     def set_name(self, name):
         self._name = name
+    
+    def get_customer_summary(self):
+        return self.get_title() + " " + self.get_name() + " " + self._address.get_address_summary()
 
 
 class CustomerSummaryView:
@@ -53,9 +59,7 @@ class CustomerSummaryView:
         self.customer = customer
     
     def get_customer_summary(self):
-        address = self.customer.get_address()
-        return self.customer.get_title() + " " + self.customer.get_name() + " " + address.get_post_code() + " " + address.get_country()
-
+        return self.customer.get_customer_summary()
 
 # Test
 
